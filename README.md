@@ -1,6 +1,6 @@
 # Advent of Code 2023 in zig
 
-See [Advent of Code 2020](https://adventofcode.com/2020) for more information.
+See [Advent of Code 2023](https://adventofcode.com/2023) for more information.
 
 ## how to run
 
@@ -24,3 +24,7 @@ $ zig build test_day01
 ```
 
 (Replace `day01` with the day you want to run.)
+
+## Reference
+
+* project setup is based on [this template](https://github.com/SpexGuy/Zig-AoC-Template/tree/main)
