@@ -13,47 +13,54 @@ const digitWords = [_][]const u8{
     "nine",
 };
 
-fn getFirstdigit(line: []const u8) !i32 {
+fn getFirstdigit(line: []const u8, firstDigitPos: *usize) !i32 {
     var l = line.len;
     while (l > 0) : (l -= 1) {
         var c: u8 = line[line.len - l];
         if (std.ascii.isDigit(c)) {
+            firstDigitPos.* = @min(line.len - l + 1, line.len);
             return c - '0';
         } else {
             for (digitWords, 1..) |word, word_i| {
                 if (std.mem.startsWith(u8, line[line.len - l ..], word)) {
+                    firstDigitPos.* = @min(line.len - l + 1 + word.len, line.len);
                     return @intCast(word_i);
                 }
             }
         }
     }
-    return undefined;
+    return error.UnexpectedEof;
 }
 
 fn getLastdigit(line: []const u8) !i32 {
     var l = line.len;
+    var found = false;
     var n: i32 = undefined;
     while (l > 0) : (l -= 1) {
         var c: u8 = line[line.len - l];
         if (std.ascii.isDigit(c)) {
+            found = true;
             n = c - '0';
         } else {
             for (digitWords, 1..) |word, word_i| {
                 if (std.mem.startsWith(u8, line[line.len - l ..], word)) {
+                    found = true;
                     n = @intCast(word_i);
                 }
             }
         }
     }
-    return n;
+    if (found) return n;
+    return error.UnexpectedEof;
 }
 
 pub fn solve(content: []const u8) !i32 {
     var result: i32 = 0;
     var readIter = std.mem.tokenize(u8, content, "\n");
     while (readIter.next()) |line| {
-        var start: i32 = try getFirstdigit(line);
-        var end: i32 = getLastdigit(line) catch start;
+        var firstDigitPos: usize = 0;
+        var start: i32 = try getFirstdigit(line, &firstDigitPos);
+        var end: i32 = getLastdigit(line[firstDigitPos - 1 ..]) catch start;
         var s = start * 10 + end;
         result += s;
     }
