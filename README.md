@@ -1,5 +1,7 @@
 # Advent of Code 2023 in zig
 
+![Build](https://github.com/thekorn/aoc-2023-zig/actions/workflows/actions.yaml/badge.svg)
+
 See [Advent of Code 2023](https://adventofcode.com/2023) for more information.
 
 ## how to run
