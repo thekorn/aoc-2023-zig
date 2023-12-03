@@ -28,3 +28,4 @@ $ zig build test_day01
 ## Reference
 
 * project setup is based on [this template](https://github.com/SpexGuy/Zig-AoC-Template/tree/main)
+* [blog post with inspiration](https://www.huy.rocks/everyday/12-11-2022-zig-using-zig-for-advent-of-code)
