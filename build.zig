@@ -25,10 +25,7 @@ pub fn build(b: *Build) void {
         const dayString = b.fmt("day{:0>2}", .{day});
         const zigFile = b.fmt("src/{s}.zig", .{dayString});
 
-        _ = std.fs.cwd().statFile(zigFile) catch |err| {
-            std.debug.print("Skipping {s}: {}\n", .{ dayString, err });
-            continue;
-        };
+        _ = std.fs.cwd().statFile(zigFile) catch continue;
 
         const exe = b.addExecutable(.{
             .name = dayString,
