@@ -1,24 +1,57 @@
 const std = @import("std");
+const utils = @import("utils.zig");
 
-pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
-
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
-
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
-
-    try bw.flush(); // don't forget to flush!
+fn getFirstdigit(line: []const u8) !usize {
+    var l = line.len;
+    while (l > 0) : (l -= 1) {
+        var c: u8 = line[line.len - l];
+        if (std.ascii.isDigit(c)) {
+            return c;
+        }
+    }
+    return undefined;
 }
 
-test "simple test" {
-    var list = std.ArrayList(i32).init(std.testing.allocator);
-    defer list.deinit(); // try commenting this out and see if zig detects the memory leak!
-    try list.append(42);
-    try std.testing.expectEqual(@as(i32, 4200), list.pop());
+fn getLastdigit(line: []const u8) !usize {
+    var l = line.len;
+    var n: usize = undefined;
+    while (l > 0) : (l -= 1) {
+        var c: u8 = line[line.len - l];
+        if (std.ascii.isDigit(c)) {
+            n = c;
+        }
+    }
+    return n;
+}
+
+pub fn part1(content: []const u8) !usize {
+    var result: usize = 0;
+    var lines = std.ArrayList([]const u8).init(utils.gpa);
+    defer lines.deinit();
+    var readIter = std.mem.tokenize(u8, content, "\n");
+    while (readIter.next()) |line| {
+        var start: usize = try getFirstdigit(line);
+        var end: usize = getLastdigit(line) catch start;
+        var s = (start - 48) * 10 + end - 48;
+        result += s;
+        //utils.print("{}\n", .{s});
+    }
+    return result;
+}
+
+pub fn main() !void {
+    const content = @embedFile("data/day01/part1.txt");
+    const result = try part1(content);
+    utils.print("Result part 1: {}\n", .{result});
+}
+
+test "part1 test" {
+    const content =
+        \\1abc2
+        \\pqr3stu8vwx
+        \\a1b2c3d4e5f
+        \\treb7uchet
+    ;
+    const result = try part1(content);
+    try std.testing.expectEqual(@as(usize, 142), result);
 }
