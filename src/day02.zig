@@ -68,8 +68,6 @@ fn getMinBoxCnt(game: []const u8) !i32 {
 }
 
 pub fn solve1(content: []const u8) !i32 {
-    var lines = std.ArrayList([]const u8).init(utils.gpa);
-    defer lines.deinit();
     var gameIter = std.mem.tokenize(u8, content, "\n");
     var currentGame: i32 = 1;
     var result: i32 = 0;
@@ -88,8 +86,6 @@ pub fn solve1(content: []const u8) !i32 {
 }
 
 pub fn solve2(content: []const u8) !i32 {
-    var lines = std.ArrayList([]const u8).init(utils.gpa);
-    defer lines.deinit();
     var gameIter = std.mem.tokenize(u8, content, "\n");
     var currentGame: i32 = 1;
     var result: i32 = 0;

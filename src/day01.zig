@@ -50,8 +50,6 @@ fn getLastdigit(line: []const u8) !i32 {
 
 pub fn solve(content: []const u8) !i32 {
     var result: i32 = 0;
-    var lines = std.ArrayList([]const u8).init(utils.gpa);
-    defer lines.deinit();
     var readIter = std.mem.tokenize(u8, content, "\n");
     while (readIter.next()) |line| {
         var start: i32 = try getFirstdigit(line);
