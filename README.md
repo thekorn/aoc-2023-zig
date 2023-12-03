@@ -27,6 +27,12 @@ $ zig build test_day01
 
 (Replace `day01` with the day you want to run.)
 
+## run all tests
+
+```bash
+$ zig build test
+```
+
 ## Reference
 
 * project setup is based on [this template](https://github.com/SpexGuy/Zig-AoC-Template/tree/main)
