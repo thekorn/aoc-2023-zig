@@ -1,0 +1,214 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build day 01",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day01"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 02",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day02"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 03",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day03"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 04",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day04"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 05",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day05"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 06",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day06"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 07",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day07"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 08",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day08"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 09",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day09"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 10",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day10"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 11",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day11"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 12",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day12"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 13",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day13"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 14",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day14"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 15",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day15"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 16",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day16"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 17",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day17"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 18",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day18"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 19",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day19"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 20",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day20"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 21",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day21"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 22",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day22"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 23",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day23"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 24",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day24"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "build day 25",
+            "type": "shell",
+            "command": "zig",
+            "args": ["build", "install_day25"], // add -Doptimize=ReleaseSafe or -Doptimize=ReleaseFast to optimize
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "format",
+            "type": "shell",
+            "command": "zig",
+            "args": ["fmt", "${file}"],
+            "problemMatcher": [],
+        },
+    ]
+}
