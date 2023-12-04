@@ -7,43 +7,30 @@ fn playGame(game: []const u8) !i32 {
     var myCards = cardIter.next().?;
     var winningCards = cardIter.next().?;
 
-    utils.print("----> {?} \n", .{myCards});
-    utils.print("----> {?} \n", .{winningCards});
-    return 0;
-}
+    var myCardIter = std.mem.tokenizeAny(u8, myCards, " ");
+    var winningCardIter = std.mem.tokenizeAny(u8, winningCards, " ");
 
-fn getMinBoxCnt(game: []const u8) !i32 {
-    var redQuota: i32 = 0;
-    var greeQuota: i32 = 0;
-    var blueQuota: i32 = 0;
-    var roundIter = std.mem.tokenize(u8, game, ";");
-    while (roundIter.next()) |round| {
-        var boxIter = std.mem.tokenize(u8, round, ",");
-        while (boxIter.next()) |box| {
-            var b = std.mem.trim(u8, box, " ");
-            //utils.print("{}: '{s}'\n", .{ currentGame, b });
-            var bIter = std.mem.tokenize(u8, b, " ");
-            var cnt: i32 = try std.fmt.parseInt(i32, bIter.next().?, 10);
-            var color = bIter.next();
-            //utils.print("{}: '{any}' '{any}'\n", .{ currentGame, cnt, color });
+    var winningNumbers = std.AutoHashMap(i32, void).init(utils.gpa);
+    defer winningNumbers.deinit();
 
-            if (std.mem.eql(u8, color.?, "red")) {
-                redQuota = @max(redQuota, cnt);
-            } else if (std.mem.eql(u8, color.?, "green")) {
-                greeQuota = @max(greeQuota, cnt);
-            } else if (std.mem.eql(u8, color.?, "blue")) {
-                blueQuota = @max(blueQuota, cnt);
-            } else {
-                return error.UnexpectedEof;
-            }
+    while (winningCardIter.next()) |card| {
+        var n = try std.fmt.parseInt(i32, card, 10);
+        try winningNumbers.put(n, {});
+    }
+
+    var numMatches: i32 = 0;
+    while (myCardIter.next()) |card| {
+        var n = try std.fmt.parseInt(i32, card, 10);
+        if (winningNumbers.contains(n)) {
+            numMatches += 1;
         }
     }
 
-    //utils.print("----> {} {} {} <== {s}\n", .{ redQuota, greeQuota, blueQuota, game });
-
-    return redQuota * greeQuota * blueQuota;
+    if (numMatches > 0) {
+        return std.math.pow(i32, 2, numMatches - 1);
+    }
+    return 0;
 }
-
 pub fn solve1(content: []const u8) !i32 {
     var gameIter = std.mem.tokenize(u8, content, "\n");
     var currentGame: i32 = 1;
@@ -54,25 +41,24 @@ pub fn solve1(content: []const u8) !i32 {
             return error.UnexpectedEof;
         }
         var points = try playGame(game[p.? + 2 ..]);
-        _ = points;
-        result += currentGame;
+        result += points;
     }
     return result;
 }
 
-pub fn solve2(content: []const u8) !i32 {
-    var gameIter = std.mem.tokenize(u8, content, "\n");
-    var currentGame: i32 = 1;
-    var result: i32 = 0;
-    while (gameIter.next()) |game| : (currentGame += 1) {
-        var p = std.mem.indexOf(u8, game, ":");
-        if (p == null) {
-            return error.UnexpectedEof;
-        }
-        result += try getMinBoxCnt(game[p.? + 2 ..]);
-    }
-    return result;
-}
+//pub fn solve2(content: []const u8) !i32 {
+//    var gameIter = std.mem.tokenize(u8, content, "\n");
+//    var currentGame: i32 = 1;
+//    var result: i32 = 0;
+//    while (gameIter.next()) |game| : (currentGame += 1) {
+//        var p = std.mem.indexOf(u8, game, ":");
+//        if (p == null) {
+//            return error.UnexpectedEof;
+//        }
+//        result += try getMinBoxCnt(game[p.? + 2 ..]);
+//    }
+//    return result;
+//}
 
 pub fn main() !void {
     const content = @embedFile("data/day04.txt");
